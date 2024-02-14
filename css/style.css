@@ -65,7 +65,7 @@ h4 {
     font-size: 2em;
 }
 .historique p {
-    text-align: center;
+    text-align: right !important;
 }
 b {
     color: red;
@@ -109,7 +109,7 @@ b {
         width: 100%;
     }
     footer img {
-        width: 30% !important;
+        width: 15% !important;
         /* right: -60% !important; */
     }
     h1 {
@@ -117,12 +117,19 @@ b {
     }
     td,
     button {
-        height: 190px;
+        height: 180px;
     }
     button {
         border: none;
-        font-size: 7em;
+        font-size: 6em;
     }
+    .historique {
+        
+        width: 75%;
+       
+        font-size: 5em;
+    }
+    .affichage {font-size: 6em;}
 }
 
 /*------------ FIN DE LA PARTIE TABLETTE ------------*/

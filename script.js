@@ -40,16 +40,28 @@ function ajouterHistorique(calcul, resultat) {
     //pour mettre l'heure entre chaque calcul
     //------------------------------------
     const options = {
-        timeZone: "Europe/Paris", 
+        timeZone: "Europe/Paris",
         hour: "numeric",
         minute: "numeric",
+        seconde: "numeric",
     };
     const heureFrance = maintenant.toLocaleTimeString("fr-FR", options);
     if (historique.innerHTML === "") {
         historique.innerHTML = "<div><h4>Pas encore de calcul fait</h4></div>";
     }
-    historique.innerHTML += `<div><h4>${heureFrance}<h4><p><b>${calcul}</b> = ${resultat} </p></div>`;
+    historique.innerHTML += `<div><h4>à ${heureFrance}<h4><p><b>${calcul}</b> = ${resultat} </p></div>`;
 }
+// function afficherHeure() {
+//     const maintenant = new Date();
+//     const heure = maintenant.getHours();
+//     const minutes = maintenant.getMinutes();
+//     const seconde = maintenant.getSeconds();
+
+//     const heureStr = (heure < 10 ? '0' + heure : heure) + 'h' + (minutes < 10 ? '0' + minutes : minutes);
+
+//     document.getElementById('heure').textContent = heureStr;
+// }
+
 //======================================================
 // POUR switch entre les bouton ou le pads numerique
 //======================================================
@@ -65,5 +77,3 @@ function ajouterHistorique(calcul, resultat) {
 //         modeBtn.textContent = 'Utiliser le pavé numérique';
 //     }
 // });
-
-
