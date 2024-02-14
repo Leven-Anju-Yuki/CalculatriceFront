@@ -97,14 +97,17 @@ h1 {
         width: 30% !important;
         /* right: -60% !important; */
     }
-    h1{font-size: 5em !important;}
-    td, button{
-      height: 190px;
-  }
-  button {
-    border: none;
-  }
-   
+    h1 {
+        font-size: 5em !important;
+    }
+    td,
+    button {
+        height: 190px;
+    }
+    button {
+        border: none;
+        font-size:7em ;
+    }
 }
 
 /*------------ FIN DE LA PARTIE TABLETTE ------------*/
