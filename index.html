@@ -7,25 +7,7 @@
         <link rel="shortcut icon" type="image/png" href="./image/favicon.png" />
         <link rel="manifest" href="manifest.json" />
         <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-        <script>
-            window.addEventListener("resize", setFavicon);
-            window.addEventListener("load", setFavicon);
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/sw.js").then(
-                    function (registration) {
-                        console.log(
-                            "Service Worker registration successful with scope: ",
-                            registration.scope
-                        );
-                    },
-                    function (error) {
-                        console.log("Service Worker registration failed: ", error);
-                    }
-                );
-            }
-        </script>
     </head>
-
     <body>
         <h1>calculatrice</h1>
         <button class="" id="installButton" style="display: none">Installer</button>
@@ -110,6 +92,30 @@
         <div class="col-3"><button>=</button></div>
     </div>-->
         <script>
+            window.addEventListener("resize", setFavicon);
+            window.addEventListener("load", setFavicon);
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js").then(
+                    function (registration) {
+                        console.log(
+                            "Service Worker registration successful with scope: ",
+                            registration.scope
+                        );
+                    },
+                    function (error) {
+                        console.log("Service Worker registration failed: ", error);
+                    }
+                );
+            }
+            let deferredPrompt;
+            const installButton = document.getElementById("installButton");
+
+            window.addEventListener("beforeinstallprompt", (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installButton.style.display = "block";
+            });
+
             installButton.addEventListener("click", () => {
                 if (deferredPrompt) {
                     deferredPrompt.prompt();
