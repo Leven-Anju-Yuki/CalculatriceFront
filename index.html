@@ -1,67 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8" />
-    <title>calculatrice</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="shortcut icon" type="image/png" href="./image/favicon.png" />
+    <head>
+        <meta charset="UTF-8" />
+        <title>calculatrice</title>
+        <link rel="stylesheet" href="css/style.css" />
+        <link rel="shortcut icon" type="image/png" href="./image/favicon.png" />
+        <link rel="manifest" href="manifest.json" />
+        <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+        <script>
+            window.addEventListener("resize", setFavicon);
+            window.addEventListener("load", setFavicon);
+            if ("serviceWorker" in navigator) {
+                navigator.serviceWorker.register("/sw.js").then(
+                    function (registration) {
+                        console.log(
+                            "Service Worker registration successful with scope: ",
+                            registration.scope
+                        );
+                    },
+                    function (error) {
+                        console.log("Service Worker registration failed: ", error);
+                    }
+                );
+            }
+        </script>
+    </head>
 
-    <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
-  </head>
+    <body>
+        <h1>calculatrice</h1>
+        <table>
+            <tr>
+                <td class="none" colspan="4">
+                    <div class="affichage">0</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="rouge" colspan="2">
+                    <button class="red" onclick="effacer()">c</button>
+                </td>
+                <td class="bleue">
+                    <button onclick="pourcentage()" class="blue">%</button>
+                </td>
+                <td class="bleue">
+                    <button onclick="afficher('/')" class="blue">/</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('7')">7</button></td>
+                <td><button onclick="afficher('8')">8</button></td>
+                <td><button onclick="afficher('9')">9</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('*')" class="blue">*</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('4')">4</button></td>
+                <td><button onclick="afficher('5')">5</button></td>
+                <td><button onclick="afficher('6')">6</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('-')" class="blue">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('1')">1</button></td>
+                <td><button onclick="afficher('2')">2</button></td>
+                <td><button onclick="afficher('3')">3</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('+')" class="blue">+</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('0')">0</button></td>
+                <td><button onclick="afficher('.')">.</button></td>
+                <td class="bleue" colspan="2">
+                    <button onclick="resoudre()" class="blue">=</button>
+                </td>
+            </tr>
+        </table>
 
-  <body>
-    <h1>calculatrice</h1>
-    <table>
-      <tr>
-        <td class="none" colspan="4">
-          <div class="affichage">0</div>
-        </td>
-      </tr>
-      <tr>
-        <td class="rouge" colspan="2">
-          <button class="red" onclick="effacer()">c</button>
-        </td>
-        <td class="bleue">
-          <button onclick="pourcentage()" class="blue">%</button>
-        </td>
-        <td class="bleue">
-          <button onclick="afficher('/')" class="blue">/</button>
-        </td>
-      </tr>
-      <tr>
-        <td><button onclick="afficher('7')">7</button></td>
-        <td><button onclick="afficher('8')">8</button></td>
-        <td><button onclick="afficher('9')">9</button></td>
-        <td class="bleue">
-          <button onclick="afficher('*')" class="blue">*</button>
-        </td>
-      </tr>
-      <tr>
-        <td><button onclick="afficher('4')">4</button></td>
-        <td><button onclick="afficher('5')">5</button></td>
-        <td><button onclick="afficher('6')">6</button></td>
-        <td class="bleue">
-          <button onclick="afficher('-')" class="blue">-</button>
-        </td>
-      </tr>
-      <tr>
-        <td><button onclick="afficher('1')">1</button></td>
-        <td><button onclick="afficher('2')">2</button></td>
-        <td><button onclick="afficher('3')">3</button></td>
-        <td class="bleue">
-          <button onclick="afficher('+')" class="blue">+</button>
-        </td>
-      </tr>
-      <tr>
-        <td><button onclick="afficher('0')">0</button></td>
-        <td><button onclick="afficher('.')">.</button></td>
-        <td class="bleue" colspan="2">
-          <button onclick="resoudre()" class="blue">=</button>
-        </td>
-      </tr>
-    </table>
-
-    <!--
+        <!--
         -----------VERSION BOOTSTRAP-----------
         <div class="row-12">
         <div class="col-6"><button>c</button></div>
@@ -91,10 +108,10 @@
         <div class="col-3"><button>.</button></div>
         <div class="col-3"><button>=</button></div>
     </div>-->
-    <script src="script.js"></script>
-  </body>
-  <footer>
-    <h1>calculatrice</h1>
-    <img class="az" src="./image/azvinquer.png" alt="" />
-  </footer>
+        <script src="script.js"></script>
+    </body>
+    <footer>
+        <h1>calculatrice</h1>
+        <img class="az" src="./image/azvinquer.png" alt="" />
+    </footer>
 </html>
