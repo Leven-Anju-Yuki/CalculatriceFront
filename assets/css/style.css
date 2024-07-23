@@ -8,7 +8,7 @@ body {
 table {
     margin: auto;
     width: 50%;
-    padding-bottom:10px !important ;
+    padding-bottom: 10px !important ;
 }
 img {
     width: 20%;
@@ -30,7 +30,30 @@ button {
     background-color: black;
     color: wheat;
 }
-
+.btn-download {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn-download:hover {
+    background-color: #0056b3;
+    text-decoration: none;
+}
+.btn-install {
+    background-color: #f57f00; /* Orange couleur */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-align: center;
+}
+.btn-install:hover {
+    background-color: #e64a19; /* Couleur orange plus foncée au survol */
+    text-decoration: none;
+}
 /*td:hover {
     border: 2px solid black;
 }
@@ -49,7 +72,9 @@ h1 {
 h4 {
     text-align: left;
 }
-h5{text-align: center !important;}
+h5 {
+    text-align: center !important;
+}
 td img {
     width: 10%;
     height: 10%;

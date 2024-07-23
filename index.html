@@ -36,6 +36,25 @@
     <body>
         <h1>calculatrice</h1>
         <button class="" id="installButton" style="display: none">Installer</button>
+        <script>
+            installButton.addEventListener("click", () => {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        if (choiceResult.outcome === "accepted") {
+                            console.log("User accepted the A2HS prompt");
+                        } else {
+                            console.log("User dismissed the A2HS prompt");
+                        }
+                        deferredPrompt = null;
+                        installButton.style.display = "none";
+                    });
+                }
+            });
+            window.addEventListener("appinstalled", () => {
+                console.log("PWA was installed");
+            });
+        </script>
         <table>
             <tr>
                 <td class="none" colspan="4">
@@ -85,26 +104,7 @@
                 </td>
             </tr>
         </table>
-        <script>
-            installButton.addEventListener("click", () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === "accepted") {
-                            console.log("User accepted the A2HS prompt");
-                        } else {
-                            console.log("User dismissed the A2HS prompt");
-                        }
-                        deferredPrompt = null;
-                        installButton.style.display = "none";
-                    });
-                }
-            });
 
-            window.addEventListener("appinstalled", () => {
-                console.log("PWA was installed");
-            });
-        </script>
         <script src="./assets/js/script.js"></script>
         <footer>
             <h1>calculatrice</h1>
