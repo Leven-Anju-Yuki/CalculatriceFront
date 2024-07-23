@@ -65,21 +65,4 @@ function supprimer() {
   }
   resultat.innerHTML = affiche;
 }
-installButton.addEventListener("click", () => {
-  if (deferredPrompt) {
-      deferredPrompt.prompt();
-      deferredPrompt.userChoice.then((choiceResult) => {
-          if (choiceResult.outcome === "accepted") {
-              console.log("User accepted the A2HS prompt");
-          } else {
-              console.log("User dismissed the A2HS prompt");
-          }
-          deferredPrompt = null;
-          installButton.style.display = "none";
-      });
-  }
-});
 
-window.addEventListener("appinstalled", () => {
-  console.log("PWA was installed");
-});
