@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <!-- Définition de l'encodage des caractères -->
+            <meta charset="UTF-8" />
+            <!-- Réglage de la fenêtre d'affichage pour une meilleure compatibilité mobile -->
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <!-- Titre de la page -->
+            <title>Calculatrice</title>
+            <!-- Balises Meta SEO -->
+            <meta name="description" content="Calculatrice" />
+            <meta name="keywords" content="calculatrice" />
+            <meta name="author" content="calculatrice" />
+            
+            <!-- Balises Meta Open Graph (OG) pour les réseaux sociaux -->
+            <meta property="og:title" content="calculatrice" />
+            <meta property="og:description" content="calculatrice" />
+            <meta property="og:type" content="website" />
+            <meta property="og:url" content="https://leven-anju-yuki.github.io/CalculatriceFront/" />
+            <meta property="og:image" content="https://leven-anju-yuki.github.io/CalculatriceFront/assets/image/favicon.png" />
+            <meta property="og:site_name" content="calculatrice" />
+            
+            <!-- Favicon pour les navigateurs de bureau et mobiles -->
+            <link id="favicon-pc" rel="icon" type="image/png" href="./assets/image/favicon.png" />
+            <link id="favicon-mobile" rel="icon" type="image/png" href="./assets/image/calculator.png" media="(max-width: 768px)" />
+              
+            <!-- Fichier manifest pour les applications web progressives -->
+            <link rel="manifest" href="./manifest.json" />
+            
+            <!-- Fichiers CSS pour le style du site -->
+            <link rel="stylesheet" href="./assets/css/style.css" />
+            <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css" /> -->
+    </head>
+    <body>
+        <h1>calculatrice</h1>
+        <button class="btn-install ml-2" id="installButton" style="display: none">Installer</button>
+        <table>
+            <tr>
+                <td class="none" colspan="4">
+                    <div class="affichage">0</div>
+                </td>
+            </tr>
+            <tr>
+                <td class="rouge" colspan="2">
+                    <button class="red" onclick="effacer()">c</button>
+                </td>
+                <td class="bleue">
+                    <button onclick="pourcentage()" class="blue">%</button>
+                </td>
+                <td class="bleue">
+                    <button onclick="afficher('/')" class="blue">/</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('7')">7</button></td>
+                <td><button onclick="afficher('8')">8</button></td>
+                <td><button onclick="afficher('9')">9</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('*')" class="blue">*</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('4')">4</button></td>
+                <td><button onclick="afficher('5')">5</button></td>
+                <td><button onclick="afficher('6')">6</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('-')" class="blue">-</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('1')">1</button></td>
+                <td><button onclick="afficher('2')">2</button></td>
+                <td><button onclick="afficher('3')">3</button></td>
+                <td class="bleue">
+                    <button onclick="afficher('+')" class="blue">+</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button onclick="afficher('0')">0</button></td>
+                <td><button onclick="afficher('.')">.</button></td>
+                <td class="bleue" colspan="2">
+                    <button onclick="resoudre()" class="blue">=</button>
+                </td>
+            </tr>
+        </table>
+
+        <script src="./assets/js/script.js"></script>
+        <script src="./assets/js/bouton installer.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery-3.6.1.min.js"></script>
+        <footer>
+            <h1>calculatrice</h1>
+            <center><img class="az" src="./assets/image/azvinquer.png" alt="" /></center>
+        </footer>
+    </body>
+</html>

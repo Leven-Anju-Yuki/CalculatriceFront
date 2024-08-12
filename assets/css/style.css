@@ -1,169 +1,164 @@
-* {
-    margin: 0;
-    padding: 0;
-}
-body {
-    background-color: rgb(248, 220, 183) !important;
-}
-table {
-    margin: auto;
-    width: 50%;
-    padding-bottom: 10px !important ;
-}
-img {
-    width: 20%;
-}
-tr {
-    margin-bottom: 50px !important;
-}
-td {
-    border-radius: 10px;
-    padding: 10px;
-    background-color: black;
-    width: 25%;
-    border: none;
-}
-
-button {
+.calculator {
     width: 100%;
-    font-size: 2em !important;
-    background-color: black;
-    color: wheat;
-}
-.btn-download {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-.btn-download:hover {
-    background-color: #0056b3;
-    text-decoration: none;
-}
-.btn-install {
-    background-color: #f57f00; /* Orange couleur */
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    text-align: center;
-}
-.btn-install:hover {
-    background-color: #e64a19; /* Couleur orange plus foncée au survol */
-    text-decoration: none;
-}
-/*td:hover {
-    border: 2px solid black;
-}
-
-button:hover {
-    background-color: antiquewhite;
-    border: none;
-    color: black;
-}*/
-h1 {
-    text-transform: uppercase;
-    text-align: center;
-    margin-bottom: 10px;
-    text-shadow: 3px 3px 0px rgb(232, 222, 204);
-}
-h4 {
-    text-align: left;
-}
-h5 {
-    text-align: center !important;
-}
-td img {
-    width: 10%;
-    height: 10%;
-}
-.affichage {
-    color: wheat;
-    height: 60px;
-    text-align: right;
-    font-size: 4em;
-}
-
-.none:hover {
-    background-color: black;
-}
-.historique {
-    background-color: rgba(255, 255, 255, 0.652);
-    box-shadow: 3px 3px 4px 0px black;
-    width: 25%;
-    padding: 15px;
+    max-width: 350px;
+    margin: auto;
+    padding: 10px;
+    background-color: #f7f7f7;
     border-radius: 10px;
-    font-size: 2em;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
-.historique p {
-    text-align: right !important;
+
+.display {
+    width: 95%;
+    height: 60px;
+    background-color: #e7e7e7;
+    text-align: right;
+    font-size: 24px;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    box-shadow: inset 0px 0px 5px rgba(0, 0, 0, 0.1);
 }
-b {
-    color: red;
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
 }
+h1 {
+    text-align: center;
+}
+button {
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:active {
+    background-color: #ddd;
+}
+
+.equals {
+    grid-column: span 1;
+    background-color: #4caf50;
+    color: white;
+}
+
+.zero {
+    grid-column: span 1;
+}
+
 .red {
-    color: red;
+    background-color: #f44336;
+    color: white;
 }
+/* .red {
+    color: red;
+} */
 
 .blue {
     color: turquoise;
 }
-/* 
-.red:hover {
-    background-color: black;
+.blue {
+    background-color: #2196f3;
+    color: white;
+}
+/* Style pour le conteneur scrollable */
+.special-buttons {
+    overflow-x: auto;
+    white-space: nowrap;
+    padding-top: 10px;
+}
+
+.scrollable-buttons button {
+    display: inline-block;
+    margin-right: 5px;
+}
+
+/* Style pour le modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 30%;
+    height: 100%;
+    overflow: auto;
+    /* background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4); */
+    padding-top: 60px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 5% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width:fit-content;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Style pour l'historique */
+.historique {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 320px; /* Assurez-vous que cela correspond à la taille de la calculatrice */
+    box-sizing: border-box;
+}
+
+.historique ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.historique li {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.historique .heure {
+    font-weight: bold;
+    font-size: 20px;
+    color: #555;
+    text-align: left;
+}
+.historique .calcul {
+    font-size: 20px;
+    text-align: right !important;
+}
+.historique .resultat {
     color: red;
+    font-weight: bold;
 }
-
-.rouge:hover {
-    background-color: black;
+.historique .date {
+    font-weight: bold;
+    font-size: 16px;
+    margin-top: 20px;
     color: red;
+    border-top: 1px solid #ccc;
+    padding-top: 10px;
 }
-
-.blue:hover {
-    background-color: black;
-    color: turquoise;
-}
-
-.bleue {
-    background-color: black;
-    color: turquoise;
-} */
 .az {
     width: 10%;
     /* right: 100%; */
     /* margin-left: 50%; */
 }
-
-/*------------ DÉBUT DE LA PARTIE TABLETTE ------------*/
-@media screen and (max-width: 1024px) {
-    table {
-        width: 100%;
-    }
-    footer img {
-        width: 15% !important;
-        /* right: -60% !important; */
-    }
-    h1 {
-        font-size: 5em !important;
-    }
-    td,
-    button {
-        height: 180px;
-    }
-    button {
-        border: none;
-        font-size: 6em !important;
-    }
-    .historique {
-        width: 75%;
-
-        font-size: 5em;
-    }
-    .affichage {
-        font-size: 6em;
-    }
-}
-
-/*------------ FIN DE LA PARTIE TABLETTE ------------*/

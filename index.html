@@ -1,111 +1,128 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
     <head>
+        <!-- Définition de l'encodage des caractères -->
         <meta charset="UTF-8" />
-        <title>calculatrice</title>
-        <link rel="stylesheet" href="./assets/css/style.css" />
-        <link rel="shortcut icon" type="image/png" href="./assets/image/favicon.png" />
-        <link rel="manifest" href="manifest.json" />
-        <script>
-            window.addEventListener("resize", setFavicon);
-            window.addEventListener("load", setFavicon);
-            if ("serviceWorker" in navigator) {
-                navigator.serviceWorker.register("/sw.js").then(
-                    function (registration) {
-                        console.log(
-                            "Service Worker registration successful with scope: ",
-                            registration.scope
-                        );
-                    },
-                    function (error) {
-                        console.log("Service Worker registration failed: ", error);
-                    }
-                );
-            }
-            let deferredPrompt;
-            const installButton = document.getElementById("installButton");
+        <!-- Réglage de la fenêtre d'affichage pour une meilleure compatibilité mobile -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Titre de la page -->
+        <title>Calculatrice</title>
+        <!-- Balises Meta SEO -->
+        <meta name="description" content="Calculatrice" />
+        <meta name="keywords" content="calculatrice" />
+        <meta name="author" content="calculatrice" />
 
-            window.addEventListener("beforeinstallprompt", (e) => {
-                e.preventDefault();
-                deferredPrompt = e;
-                installButton.style.display = "block";
-            });
-        </script>
-        <!--<link rel="stylesheet" href="css/bootstrap.min.css">-->
+        <!-- Balises Meta Open Graph (OG) pour les réseaux sociaux -->
+        <meta property="og:title" content="calculatrice" />
+        <meta property="og:description" content="calculatrice" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://leven-anju-yuki.github.io/CalculatriceFront/" />
+        <meta
+            property="og:image"
+            content="https://leven-anju-yuki.github.io/CalculatriceFront/assets/image/favicon.png"
+        />
+        <meta property="og:site_name" content="calculatrice" />
+
+        <!-- Favicon pour les navigateurs de bureau et mobiles -->
+        <link id="favicon-pc" rel="icon" type="image/png" href="./assets/image/favicon.png" />
+        <link
+            id="favicon-mobile"
+            rel="icon"
+            type="image/png"
+            href="./assets/image/calculator.png"
+            media="(max-width: 768px)"
+        />
+
+        <!-- Fichier manifest pour les applications web progressives -->
+        <link rel="manifest" href="./manifest.json" />
+
+        <!-- Fichiers CSS pour le style du site -->
+        <link rel="stylesheet" href="./assets/css/style.css" />
+        <!-- <link rel="stylesheet" href="./assets/css/bootstrap.min.css" /> -->
     </head>
     <body>
-        <h1>calculatrice</h1>
-        <button class="" id="installButton" style="display: none">Installer</button>
-        <script>
-            installButton.addEventListener("click", () => {
-                if (deferredPrompt) {
-                    deferredPrompt.prompt();
-                    deferredPrompt.userChoice.then((choiceResult) => {
-                        if (choiceResult.outcome === "accepted") {
-                            console.log("User accepted the A2HS prompt");
-                        } else {
-                            console.log("User dismissed the A2HS prompt");
-                        }
-                        deferredPrompt = null;
-                        installButton.style.display = "none";
-                    });
-                }
-            });
-            window.addEventListener("appinstalled", () => {
-                console.log("PWA was installed");
-            });
-        </script>
-        <table>
-            <tr>
-                <td class="none" colspan="4">
-                    <div class="affichage">0</div>
-                </td>
-            </tr>
-            <tr>
-                <td class="rouge" colspan="2">
-                    <button class="red" onclick="effacer()">c</button>
-                </td>
-                <td class="bleue">
-                    <button onclick="pourcentage()" class="blue">%</button>
-                </td>
-                <td class="bleue">
-                    <button onclick="afficher('/')" class="blue">/</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button onclick="afficher('7')">7</button></td>
-                <td><button onclick="afficher('8')">8</button></td>
-                <td><button onclick="afficher('9')">9</button></td>
-                <td class="bleue">
-                    <button onclick="afficher('*')" class="blue">*</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button onclick="afficher('4')">4</button></td>
-                <td><button onclick="afficher('5')">5</button></td>
-                <td><button onclick="afficher('6')">6</button></td>
-                <td class="bleue">
-                    <button onclick="afficher('-')" class="blue">-</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button onclick="afficher('1')">1</button></td>
-                <td><button onclick="afficher('2')">2</button></td>
-                <td><button onclick="afficher('3')">3</button></td>
-                <td class="bleue">
-                    <button onclick="afficher('+')" class="blue">+</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button onclick="afficher('0')">0</button></td>
-                <td><button onclick="afficher('.')">.</button></td>
-                <td class="bleue" colspan="2">
-                    <button onclick="resoudre()" class="blue">=</button>
-                </td>
-            </tr>
-        </table>
+        <header>
+            <h1>Calculatrice</h1>
+            <button class="btn-install ml-2" id="installButton" style="display: none">
+                Installer
+            </button>
+        </header>
+        <main>
+            <div class="calculator">
+                <div class="display">0</div>
+                <div class="buttons">
+                    <!-- Ligne des boutons pour effacer et les parenthèses -->
+                    <button onclick="effacer()" class="red">C</button>
+                    <button onclick="effacerUnCaractere()" class="red">CE</button
+                    ><!-- Bouton pour les parenthèses -->
+                    <button onclick="toggleParentheses()">()</button>
 
+                    <button onclick="afficher('/')" class="blue">/</button>
+                    <!-- Ligne des chiffres et opérateurs -->
+                    <button onclick="afficher('7')">7</button>
+                    <button onclick="afficher('8')">8</button>
+                    <button onclick="afficher('9')">9</button>
+                    <button onclick="afficher('-')" class="blue">-</button>
+                    <button onclick="afficher('4')">4</button>
+                    <button onclick="afficher('5')">5</button>
+                    <button onclick="afficher('6')">6</button>
+                    <button onclick="afficher('*')" class="blue">*</button>
+                    <button onclick="afficher('1')">1</button>
+                    <button onclick="afficher('2')">2</button>
+                    <button onclick="afficher('3')">3</button>
+                    <button onclick="afficher('+')" class="blue">+</button>
+                    <button onclick="ouvrirModal()">
+                        <img
+                            width="65%"
+                            src="assets/image/caractere-speciaux.png"
+                            alt="Caractères spéciaux"
+                        />
+                    </button>
+                    <button onclick="afficher('0')" class="zero">0</button>
+                    <button onclick="afficher('.')">.</button>
+
+                    <button onclick="resoudre()" class="equals">=</button>
+
+                    <!-- Bouton pour ouvrir la modal des caractères spéciaux -->
+                </div>
+            </div>
+
+            <!-- Div pour l'historique des calculs -->
+            <center>
+                <div id="historique" class="historique">
+                    <h2>Historique des calculs</h2>
+                    <ul id="historiqueList"></ul>
+                </div>
+            </center>
+
+            <!-- Modal pour les caractères spéciaux -->
+            <div id="modalCaracteres" class="modal">
+                <div class="modal-content">
+                    <span class="close" onclick="fermerModal()">&times;</span>
+                    <h2>Caractères spéciaux</h2>
+                    <div class="special-buttons">
+                        <button onclick="afficher('%')">%</button>
+                        <button onclick="afficher('√')">√</button>
+                        <button onclick="afficher('x^y')">x^y</button>
+                        <button onclick="afficher('1/x')">1/x</button>
+                        <button onclick="afficher('sin')">sin</button>
+                        <button onclick="afficher('cos')">cos</button>
+                        <button onclick="afficher('tan')">tan</button><br>
+                        <button onclick="afficher('log')">log</button>
+                        <button onclick="afficher('ln')">ln</button>
+                        <button onclick="afficher('!')">x!</button>
+                        <button onclick="afficher('M+')">M+</button>
+                        <button onclick="afficher('M-')">M-</button>
+                        <button onclick="afficher('MR')">MR</button>
+                        <button onclick="afficher('MC')">MC</button>
+                    </div>
+                </div>
+            </div>
+        </main>
         <script src="./assets/js/script.js"></script>
+        <script src="./assets/js/bouton installer.js"></script>
+        <script src="./assets/js/bootstrap.min.js"></script>
+        <script src="./assets/js/jquery-3.6.1.min.js"></script>
         <footer>
             <h1>calculatrice</h1>
             <center><img class="az" src="./assets/image/azvinquer.png" alt="" /></center>
