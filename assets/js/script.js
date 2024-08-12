@@ -2,34 +2,34 @@ let memoire = 0;
 let derniereDate = null;
 
 // Fonction pour traiter les entrées du clavier
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener("DOMContentLoaded", (event) => {
     function handleKeyboardInput(event) {
         const key = event.key;
 
         // Vérifie si la touche pressée est un chiffre ou un opérateur valide
-        if (/\d/.test(key) || ['+', '-', '*', '/'].includes(key)) {
+        if (/\d/.test(key) || ["+", "-", "*", "/"].includes(key)) {
             afficher(key);
         }
 
         // Gérer les touches spéciales
-        if (key === 'Backspace') {
+        if (key === "Backspace") {
             effacerUnCaractere();
-        } else if (key === 'Enter') {
+        } else if (key === "Enter") {
             resoudre();
-        } else if (key === '(' || key === ')') {
+        } else if (key === "(" || key === ")") {
             toggleParentheses();
         }
     }
 
     // Ajoute l'événement de touche au document
-    document.addEventListener('keydown', handleKeyboardInput);
+    document.addEventListener("keydown", handleKeyboardInput);
 });
 
 // Affiche le chiffre ou l'opérateur
 function afficher(valeur) {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     // Retirer le '0' initial si présent
-    if (affichage.innerHTML === '0') {
+    if (affichage.innerHTML === "0") {
         affichage.innerHTML = valeur;
     } else {
         affichage.innerHTML += valeur;
@@ -38,66 +38,66 @@ function afficher(valeur) {
 
 // Efface tout l'affichage
 function effacer() {
-    document.querySelector('.display').innerHTML = '0';
+    document.querySelector(".display").innerHTML = "0";
 }
 
 // Efface le dernier caractère
 function effacerUnCaractere() {
-    let affichage = document.querySelector('.display');
-    affichage.innerHTML = affichage.innerHTML.slice(0, -1) || '0';
+    let affichage = document.querySelector(".display");
+    affichage.innerHTML = affichage.innerHTML.slice(0, -1) || "0";
 }
 
 // Calcule et affiche le résultat
 function resoudre() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     const calcul = affichage.innerHTML;
     try {
-        const resultat = eval(calcul); 
+        const resultat = eval(calcul);
         affichage.innerHTML = resultat;
         ajouterHistorique(calcul, resultat);
     } catch (e) {
-        affichage.innerHTML = 'Erreur';
+        affichage.innerHTML = "Erreur";
     }
 }
 
 // Calcul de la racine carrée
 function racineCarree() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     affichage.innerHTML = Math.sqrt(eval(affichage.innerHTML));
 }
 
 // Calcul de la puissance
 function puissance() {
-    let affichage = document.querySelector('.display');
-    affichage.innerHTML += '**';
+    let affichage = document.querySelector(".display");
+    affichage.innerHTML += "**";
 }
 
 // Calcul de l'inverse
 function inverser() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     affichage.innerHTML = 1 / eval(affichage.innerHTML);
 }
 
 // Calcul des fonctions trigonométriques
 function trigonometrique(fonction) {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     let valeur = eval(affichage.innerHTML);
-    if (fonction === 'sin') {
+    if (fonction === "sin") {
         affichage.innerHTML = Math.sin(valeur);
-    } else if (fonction === 'cos') {
+    } else if (fonction === "cos") {
         affichage.innerHTML = Math.cos(valeur);
-    } else if (fonction === 'tan') {
+    } else if (fonction === "tan") {
         affichage.innerHTML = Math.tan(valeur);
     }
 }
 
 // Calcul des logarithmes
 function logarithme(fonction) {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     let valeur = eval(affichage.innerHTML);
-    if (fonction === 'log') {
+    if (fonction === "log") {
         affichage.innerHTML = Math.log10(valeur);
-    } else if (fonction === 'ln') {
+    } else if (fonction === "ln") {
         affichage.innerHTML = Math.log(valeur);
     }
 }
@@ -109,8 +109,8 @@ function toggleParentheses() {
     const lastChar = text[text.length - 1];
 
     // Retirer le '0' initial si présent
-    if (text === '0') {
-        display.textContent = '';
+    if (text === "0") {
+        display.textContent = "";
     }
 
     // Compte le nombre de parenthèses ouvrantes et fermantes
@@ -118,18 +118,18 @@ function toggleParentheses() {
     const closeParentheses = (text.match(/\)/g) || []).length;
 
     // Si le dernier caractère est une parenthèse fermante ou l'expression est équilibrée
-    if (lastChar === ')' || openParentheses > closeParentheses) {
+    if (lastChar === ")" || openParentheses > closeParentheses) {
         // Ajouter une parenthèse fermante si nécessaire
-        display.textContent += ')';
+        display.textContent += ")";
     } else {
         // Sinon, ajouter une parenthèse ouvrante
-        display.textContent += '(';
+        display.textContent += "(";
     }
 }
 
 // Calcul de la factorielle
 function factorielle() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     let n = eval(affichage.innerHTML);
     let result = 1;
     for (let i = 1; i <= n; i++) {
@@ -140,17 +140,17 @@ function factorielle() {
 
 // Gestion de la mémoire
 function memoireAjouter() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     memoire += eval(affichage.innerHTML);
 }
 
 function memoireSoustraire() {
-    let affichage = document.querySelector('.display');
+    let affichage = document.querySelector(".display");
     memoire -= eval(affichage.innerHTML);
 }
 
 function memoireRappeler() {
-    document.querySelector('.display').innerHTML = memoire;
+    document.querySelector(".display").innerHTML = memoire;
 }
 
 function memoireEffacer() {
@@ -173,11 +173,11 @@ function ajouterHistorique(calcul, resultat) {
     const li = document.createElement("li");
 
     // Format de l'heure sans les secondes
-    const optionsHeure = { hour: '2-digit', minute: '2-digit' };
+    const optionsHeure = { hour: "2-digit", minute: "2-digit" };
     const heure = new Date().toLocaleTimeString([], optionsHeure);
 
     // Format de la date (format de date complet ou personnalisé)
-    const optionsDate = { year: 'numeric', month: 'long', day: 'numeric' };
+    const optionsDate = { year: "numeric", month: "long", day: "numeric" };
     const dateActuelle = new Date().toLocaleDateString([], optionsDate);
 
     // Vérifie si la date a changé
