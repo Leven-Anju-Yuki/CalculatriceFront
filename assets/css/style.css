@@ -162,3 +162,14 @@ button:active {
     /* right: 100%; */
     /* margin-left: 50%; */
 }
+/*------------ DÉBUT DE LA PARTIE TÉLÉPHONE ------------*/
+@media screen and (max-width: 500px) and (max-width: 1000px) {
+    
+}
+
+/*------------ FIN DE LA PARTIE TÉLÉPHONE ------------*/
+
+/*------------ DÉBUT DE LA PARTIE TABLETTE ------------*/
+@media screen and (max-width: 1024px) {
+ .modal{width: 80%;}
+}
