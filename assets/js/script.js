@@ -1,31 +1,34 @@
 let memoire = 0;
+let derniereDate = null;
+
+// Fonction pour traiter les entrées du clavier
 document.addEventListener('DOMContentLoaded', (event) => {
-  // Fonction pour traiter les entrées du clavier
-  function handleKeyboardInput(event) {
-      const key = event.key;
+    function handleKeyboardInput(event) {
+        const key = event.key;
 
-      // Vérifie si la touche pressée est un chiffre ou un opérateur valide
-      if (/\d/.test(key) || ['+', '-', '*', '/'].includes(key)) {
-          afficher(key);
-      }
+        // Vérifie si la touche pressée est un chiffre ou un opérateur valide
+        if (/\d/.test(key) || ['+', '-', '*', '/'].includes(key)) {
+            afficher(key);
+        }
 
-      // Gérer les touches spéciales
-      if (key === 'Backspace') {
-          effacerUnCaractere();
-      } else if (key === 'Enter') {
-          resoudre();
-      } else if (key === '(' || key === ')') {
-          toggleParentheses();
-      }
-  }
+        // Gérer les touches spéciales
+        if (key === 'Backspace') {
+            effacerUnCaractere();
+        } else if (key === 'Enter') {
+            resoudre();
+        } else if (key === '(' || key === ')') {
+            toggleParentheses();
+        }
+    }
 
-  // Ajoute l'événement de touche au document
-  document.addEventListener('keydown', handleKeyboardInput);
+    // Ajoute l'événement de touche au document
+    document.addEventListener('keydown', handleKeyboardInput);
 });
 
 // Affiche le chiffre ou l'opérateur
 function afficher(valeur) {
     let affichage = document.querySelector('.display');
+    // Retirer le '0' initial si présent
     if (affichage.innerHTML === '0') {
         affichage.innerHTML = valeur;
     } else {
@@ -47,8 +50,11 @@ function effacerUnCaractere() {
 // Calcule et affiche le résultat
 function resoudre() {
     let affichage = document.querySelector('.display');
+    const calcul = affichage.innerHTML;
     try {
-        affichage.innerHTML = eval(affichage.innerHTML);
+        const resultat = eval(calcul); 
+        affichage.innerHTML = resultat;
+        ajouterHistorique(calcul, resultat);
     } catch (e) {
         affichage.innerHTML = 'Erreur';
     }
@@ -95,24 +101,32 @@ function logarithme(fonction) {
         affichage.innerHTML = Math.log(valeur);
     }
 }
+
+// Fonction pour ajouter ou retirer des parenthèses
 function toggleParentheses() {
-  const display = document.querySelector(".display");
-  const text = display.textContent;
-  const lastChar = text[text.length - 1];
-  
-  // Compte le nombre de parenthèses ouvrantes et fermantes
-  const openParentheses = (text.match(/\(/g) || []).length;
-  const closeParentheses = (text.match(/\)/g) || []).length;
-  
-  // Si le dernier caractère est une parenthèse fermante ou l'expression est équilibrée
-  if (lastChar === ')' || openParentheses > closeParentheses) {
-      // Ajouter une parenthèse fermante si nécessaire
-      display.textContent += ')';
-  } else {
-      // Sinon, ajouter une parenthèse ouvrante
-      display.textContent += '(';
-  }
+    const display = document.querySelector(".display");
+    const text = display.textContent;
+    const lastChar = text[text.length - 1];
+
+    // Retirer le '0' initial si présent
+    if (text === '0') {
+        display.textContent = '';
+    }
+
+    // Compte le nombre de parenthèses ouvrantes et fermantes
+    const openParentheses = (text.match(/\(/g) || []).length;
+    const closeParentheses = (text.match(/\)/g) || []).length;
+
+    // Si le dernier caractère est une parenthèse fermante ou l'expression est équilibrée
+    if (lastChar === ')' || openParentheses > closeParentheses) {
+        // Ajouter une parenthèse fermante si nécessaire
+        display.textContent += ')';
+    } else {
+        // Sinon, ajouter une parenthèse ouvrante
+        display.textContent += '(';
+    }
 }
+
 // Calcul de la factorielle
 function factorielle() {
     let affichage = document.querySelector('.display');
@@ -142,18 +156,16 @@ function memoireRappeler() {
 function memoireEffacer() {
     memoire = 0;
 }
+
 // Ouvrir la modal
 function ouvrirModal() {
-  document.getElementById("modalCaracteres").style.display = "block";
+    document.getElementById("modalCaracteres").style.display = "block";
 }
 
 // Fermer la modal
 function fermerModal() {
-  document.getElementById("modalCaracteres").style.display = "none";
+    document.getElementById("modalCaracteres").style.display = "none";
 }
-
-// Variable pour stocker la dernière date affichée
-let derniereDate = null;
 
 // Fonction pour ajouter un calcul à l'historique avec l'heure
 function ajouterHistorique(calcul, resultat) {
@@ -184,20 +196,3 @@ function ajouterHistorique(calcul, resultat) {
                     <div class="calcul">${calcul} = <span class="resultat">${resultat}</span></div>`;
     historiqueList.appendChild(li);
 }
-
-// Exemple d'utilisation après la résolution d'un calcul
-// Fonction pour résoudre le calcul
-function resoudre() {
-  const display = document.querySelector(".display");
-  const calcul = display.textContent;
-  try {
-      // Utilisez une méthode sécurisée pour évaluer les calculs
-      const resultat = eval(calcul); 
-      display.textContent = resultat;
-      ajouterHistorique(calcul, resultat);
-  } catch (e) {
-      display.textContent = "Erreur";
-  }
-}
-
-
