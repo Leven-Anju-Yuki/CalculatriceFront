@@ -10,7 +10,7 @@
 }
 
 .display {
-    width: 95%;
+    width: fit-content;
     height: 60px;
     background-color: #e7e7e7;
     text-align: right;
