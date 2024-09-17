@@ -1,5 +1,5 @@
 .calculator {
-    width: 100%;
+    width: 90% !important;
     max-width: 350px;
     margin: auto;
     padding: 10px;
@@ -51,21 +51,6 @@ button:active {
     grid-column: span 1;
 }
 
-.red {
-    background-color: #f44336;
-    color: white;
-}
-/* .red {
-    color: red;
-} */
-
-.blue {
-    color: turquoise;
-}
-.blue {
-    background-color: #2196f3;
-    color: white;
-}
 /* Style pour le conteneur scrollable */
 .special-buttons {
     overflow-x: auto;
@@ -167,6 +152,46 @@ button:active {
     border-top: 1px solid #ccc;
     padding-top: 10px;
 }
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+}
+
+.display-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.display {
+    flex: 1;
+    text-align: right;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+}
+
+button {
+    padding: 15px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+}
+
+.red {
+    background-color: rgb(238, 38, 38);
+    color: white;
+}
+
+.blue {
+    background-color: rgb(78, 78, 230);
+    color: white;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
 .az {
     width: 10%;
     /* right: 100%; */

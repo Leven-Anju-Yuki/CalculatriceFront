@@ -49,14 +49,28 @@
         </header>
         <main>
             <div class="calculator">
-                <div class="display">0</div>
+                <div class="display-container">
+                    <div class="display">0</div>
+                    <img
+                        onclick="effacerUnCaractere()"
+                        style="width: 50px;  "
+                        src="./assets/image/retour_blanc.png"
+                        alt=""
+                    />
+                </div>
                 <div class="buttons">
-                    <!-- Ligne des boutons pour effacer et les parenthèses -->
-                    <button onclick="effacer()" class="red">C</button>
-                    <button onclick="effacerUnCaractere()" class="red">CE</button
-                    ><!-- Bouton pour les parenthèses -->
-                    <button onclick="toggleParentheses()">()</button>
+                    <button onclick="effacer()"  class="red">C</button>
+                    <button onclick="afficher('%')">%</button>
+                    <!-- <button onclick="ouvrirModal()">
+                        <img
+                            width="65%"
+                            src="assets/image/caractere-speciaux.png"
+                            alt="Caractères spéciaux"
+                        /></button 
+                    >--><!-- Ligne des boutons pour effacer et les parenthèses -->
 
+                    <!-- Bouton pour les parenthèses -->
+                    <button onclick="toggleParentheses()">()</button>
                     <button onclick="afficher('/')" class="blue">/</button>
                     <!-- Ligne des chiffres et opérateurs -->
                     <button onclick="afficher('7')">7</button>
@@ -71,13 +85,7 @@
                     <button onclick="afficher('2')">2</button>
                     <button onclick="afficher('3')">3</button>
                     <button onclick="afficher('+')" class="blue">+</button>
-                    <button onclick="ouvrirModal()">
-                        <img
-                            width="65%"
-                            src="assets/image/caractere-speciaux.png"
-                            alt="Caractères spéciaux"
-                        />
-                    </button>
+
                     <button onclick="afficher('0')" class="zero">0</button>
                     <button onclick="afficher('.')">.</button>
 
@@ -107,7 +115,7 @@
                         <button onclick="afficher('1/x')">1/x</button>
                         <button onclick="afficher('sin')">sin</button>
                         <button onclick="afficher('cos')">cos</button>
-                        <button onclick="afficher('tan')">tan</button><br>
+                        <button onclick="afficher('tan')">tan</button><br />
                         <button onclick="afficher('log')">log</button>
                         <button onclick="afficher('ln')">ln</button>
                         <button onclick="afficher('!')">x!</button>
