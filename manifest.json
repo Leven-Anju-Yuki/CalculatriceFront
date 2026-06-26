@@ -10,12 +10,12 @@
     "lang": "fr",
     "icons": [
       {
-        "src": "./assets/image/calcualtor.png",
+        "src": "./assets/image/calculator.png",
         "sizes": "192x192",
         "type": "image/png"
       },
       {
-        "src": "./assets/image/calcualtor.png",
+        "src": "./assets/image/calculator.png",
         "sizes": "512x512",
         "type": "image/png"
       }
