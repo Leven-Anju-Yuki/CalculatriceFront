@@ -11,8 +11,7 @@ self.addEventListener('install', function(event) {
           './assets/image/favicon.png',
           './assets/image/calculator.png',
           './assets/image/retour_blanc.png',
-          './assets/image/icon-192x192.png',
-          './assets/image/icon-512x512.png'
+          './assets/image/calculator.png',
         ]);
       })
     );
