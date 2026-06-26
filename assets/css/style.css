@@ -209,3 +209,44 @@ button {
         width: 80%;
     }
 }
+
+/* Mise en page générale : calculatrice + historique
+   - Sur mobile/tablette : empilés l'un en dessous de l'autre (comportement par défaut)
+   - Sur grand écran (PC) : côte à côte, voir media query plus bas */
+.contenu-principal {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.contenu-principal .calculator,
+.contenu-principal .historique {
+    margin: 0;
+}
+
+/*------------ MISE EN PAGE PC : calculatrice et historique côte à côte ------------*/
+@media screen and (min-width: 900px) {
+    .contenu-principal {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 30px;
+        max-width: 750px;
+        margin: 0 auto;
+    }
+
+    .contenu-principal .calculator {
+        flex: 0 0 350px;
+        width: 350px !important;
+        margin: 0;
+    }
+
+    .contenu-principal .historique {
+        flex: 1 1 320px;
+        margin-top: 0;
+        max-height: 480px;
+        overflow-y: auto;
+    }
+}
+

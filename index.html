@@ -8,20 +8,33 @@
         <!-- Titre de la page -->
         <title>Calculatrice</title>
         <!-- Balises Meta SEO -->
-        <meta name="description" content="Calculatrice" />
-        <meta name="keywords" content="calculatrice" />
+        <meta name="description" content="Calculatrice en ligne gratuite avec historique des calculs, installable comme application (PWA)." />
+        <meta name="keywords" content="calculatrice, calculatrice en ligne, calculatrice gratuite, PWA" />
         <meta name="author" content="calculatrice" />
+        <meta name="robots" content="index, follow" />
+        <!-- Couleur de la barre du navigateur sur mobile (Android/Chrome) -->
+        <meta name="theme-color" content="#007bff" />
 
         <!-- Balises Meta Open Graph (OG) pour les réseaux sociaux -->
-        <meta property="og:title" content="calculatrice" />
-        <meta property="og:description" content="calculatrice" />
+        <meta property="og:title" content="Calculatrice" />
+        <meta property="og:description" content="Calculatrice en ligne gratuite avec historique des calculs, installable comme application (PWA)." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://leven-anju-yuki.github.io/CalculatriceFront/" />
         <meta
             property="og:image"
             content="https://leven-anju-yuki.github.io/CalculatriceFront/assets/image/favicon.png"
         />
-        <meta property="og:site_name" content="calculatrice" />
+        <meta property="og:locale" content="fr_FR" />
+        <meta property="og:site_name" content="Calculatrice" />
+
+        <!-- Balises Meta Twitter Card (aperçu sur Twitter/X) -->
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Calculatrice" />
+        <meta name="twitter:description" content="Calculatrice en ligne gratuite avec historique des calculs, installable comme application (PWA)." />
+        <meta
+            name="twitter:image"
+            content="https://leven-anju-yuki.github.io/CalculatriceFront/assets/image/favicon.png"
+        />
 
         <!-- Favicon pour les navigateurs de bureau et mobiles -->
         <link id="favicon-pc" rel="icon" type="image/png" href="./assets/image/favicon.png" />
@@ -48,60 +61,60 @@
             </button>
         </header>
         <main>
-            <div class="calculator">
-                <div class="display-container">
-                    <div class="display">0</div>
-                    <img
-                        onclick="effacerUnCaractere()"
-                        style="width: 50px;  "
-                        src="./assets/image/retour_blanc.png"
-                        alt=""
-                    />
-                </div>
-                <div class="buttons">
-                    <button onclick="effacer()"  class="red">C</button>
-                    <button onclick="afficher('%')">%</button>
-                    <!-- <button onclick="ouvrirModal()">
+            <div class="contenu-principal">
+                <div class="calculator">
+                    <div class="display-container">
+                        <div class="display">0</div>
                         <img
-                            width="65%"
-                            src="assets/image/caractere-speciaux.png"
-                            alt="Caractères spéciaux"
-                        /></button 
-                    >--><!-- Ligne des boutons pour effacer et les parenthèses -->
+                            onclick="effacerUnCaractere()"
+                            style="width: 50px;  "
+                            src="./assets/image/retour_blanc.png"
+                            alt=""
+                        />
+                    </div>
+                    <div class="buttons">
+                        <button onclick="effacer()"  class="red">C</button>
+                        <button onclick="afficher('%')">%</button>
+                        <!-- <button onclick="ouvrirModal()">
+                            <img
+                                width="65%"
+                                src="assets/image/caractere-speciaux.png"
+                                alt="Caractères spéciaux"
+                            /></button 
+                        >--><!-- Ligne des boutons pour effacer et les parenthèses -->
 
-                    <!-- Bouton pour les parenthèses -->
-                    <button onclick="toggleParentheses()">()</button>
-                    <button onclick="afficher('/')" class="blue">/</button>
-                    <!-- Ligne des chiffres et opérateurs -->
-                    <button onclick="afficher('7')">7</button>
-                    <button onclick="afficher('8')">8</button>
-                    <button onclick="afficher('9')">9</button>
-                    <button onclick="afficher('-')" class="blue">-</button>
-                    <button onclick="afficher('4')">4</button>
-                    <button onclick="afficher('5')">5</button>
-                    <button onclick="afficher('6')">6</button>
-                    <button onclick="afficher('*')" class="blue">*</button>
-                    <button onclick="afficher('1')">1</button>
-                    <button onclick="afficher('2')">2</button>
-                    <button onclick="afficher('3')">3</button>
-                    <button onclick="afficher('+')" class="blue">+</button>
+                        <!-- Bouton pour les parenthèses -->
+                        <button onclick="toggleParentheses()">()</button>
+                        <button onclick="afficher('/')" class="blue">/</button>
+                        <!-- Ligne des chiffres et opérateurs -->
+                        <button onclick="afficher('7')">7</button>
+                        <button onclick="afficher('8')">8</button>
+                        <button onclick="afficher('9')">9</button>
+                        <button onclick="afficher('-')" class="blue">-</button>
+                        <button onclick="afficher('4')">4</button>
+                        <button onclick="afficher('5')">5</button>
+                        <button onclick="afficher('6')">6</button>
+                        <button onclick="afficher('*')" class="blue">*</button>
+                        <button onclick="afficher('1')">1</button>
+                        <button onclick="afficher('2')">2</button>
+                        <button onclick="afficher('3')">3</button>
+                        <button onclick="afficher('+')" class="blue">+</button>
 
-                    <button onclick="afficher('0')" class="zero">0</button>
-                    <button onclick="afficher('.')">.</button>
+                        <button onclick="afficher('0')" class="zero">0</button>
+                        <button onclick="afficher('.')">.</button>
 
-                    <button onclick="resoudre()" class="equals">=</button>
+                        <button onclick="resoudre()" class="equals">=</button>
 
-                    <!-- Bouton pour ouvrir la modal des caractères spéciaux -->
+                        <!-- Bouton pour ouvrir la modal des caractères spéciaux -->
+                    </div>
                 </div>
-            </div>
 
-            <!-- Div pour l'historique des calculs -->
-            <center>
+                <!-- Div pour l'historique des calculs -->
                 <div id="historique" class="historique">
                     <h2>Historique des calculs</h2>
                     <ul id="historiqueList"></ul>
                 </div>
-            </center>
+            </div>
 
             <!-- Modal pour les caractères spéciaux -->
             <div id="modalCaracteres" class="modal">
@@ -128,7 +141,7 @@
             </div>
         </main>
         <script src="./assets/js/script.js"></script>
-        <script src="./assets/js/bouton installer.js"></script>
+        <script src="./assets/js/bouton_installer.js"></script>
         <script src="./assets/js/bootstrap.min.js"></script>
         <script src="./assets/js/jquery-3.6.1.min.js"></script>
         <!-- <footer>

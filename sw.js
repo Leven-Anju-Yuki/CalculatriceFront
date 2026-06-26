@@ -2,12 +2,17 @@ self.addEventListener('install', function(event) {
     event.waitUntil(
       caches.open('v1').then(function(cache) {
         return cache.addAll([
-          '/',
-          '/index.html',
-          '/styles.css',
-          '/manifest.json',
-          '/icon-192x192.png',
-          '/icon-512x512.png'
+          './',
+          './index.html',
+          './manifest.json',
+          './assets/css/style.css',
+          './assets/js/script.js',
+          './assets/js/bouton_installer.js',
+          './assets/image/favicon.png',
+          './assets/image/calculator.png',
+          './assets/image/retour_blanc.png',
+          './assets/image/icon-192x192.png',
+          './assets/image/icon-512x512.png'
         ]);
       })
     );
